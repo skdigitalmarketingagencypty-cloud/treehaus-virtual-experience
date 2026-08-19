@@ -1,0 +1,6 @@
+# Source video masters — the site streams these from Cloudflare R2
+*.mp4
+
+# QR code source artwork (the exported asset lives in assets/qr/)
+QR codes V 1.psd
+QR codes V 1.jpg

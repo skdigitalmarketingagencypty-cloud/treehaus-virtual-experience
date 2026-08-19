@@ -22,7 +22,7 @@ front, so they begin playing before the file finishes downloading.
 | 02 The Private Lounge | `The Private Meeting Room & Lounge .mp4` | 0:41 |
 | 03 The Training Room | `The Training Room 2 .mp4` | 0:37 |
 | 04 Office and Library | `The Office&Library 2 .mp4` | 0:53 |
-| 05 The Executive Lounge | `The Executive Lounge .mp4` | 0:44 |
+| 05 The Executive Lounge | `Executive lounge 2 .mp4` | 0:44 |
 
 To swap a clip, upload the new file to the R2 bucket and point that room's `src` in `tour.html`
 at its public URL (URL-encode the spaces and `&`). The chapter timestamps in `tour.html` are cut

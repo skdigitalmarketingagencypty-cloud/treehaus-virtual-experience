@@ -12,27 +12,21 @@ Each file is a fully self-contained, single-file HTML bundle (fonts, images and 
 
 ## Videos
 
-Rooms 01–04 are served from `videos/` as relative paths — committed with the site, no external
-host needed. They are H.264 1080p/30, CRF 23, `+faststart` (moov atom first, so they begin
-playing before the file finishes downloading).
+All five room walkthroughs are served from Cloudflare R2 (`pub-7e5c5a58….r2.dev`) — nothing
+video-related is committed with the site. They are H.264 1080p masters with the moov atom up
+front, so they begin playing before the file finishes downloading.
 
-| Room | File | Length |
+| Room | R2 object | Length |
 | --- | --- | --- |
-| 01 The Boardroom | `videos/boardroom.mp4` | 0:30 |
-| 02 The Private Lounge | `videos/private-lounge.mp4` | 0:41 |
-| 03 The Training Room | `videos/training-room.mp4` | 0:37 |
-| 04 Office and Library | `videos/office-library.mp4` | 0:53 |
-| 05 The Executive Lounge | Cloudflare R2 (`pub-7e5c5a58….r2.dev`) | 0:44 |
+| 01 The Boardroom | `The Bordroom 2 .mp4` | 0:30 |
+| 02 The Private Lounge | `The Private Meeting Room & Lounge .mp4` | 0:41 |
+| 03 The Training Room | `The Training Room 2 .mp4` | 0:37 |
+| 04 Office and Library | `The Office&Library 2 .mp4` | 0:53 |
+| 05 The Executive Lounge | `The Executive Lounge .mp4` | 0:44 |
 
-The uncompressed masters stay in the project root and are git-ignored. To re-encode one after
-replacing a master:
-
-```
-ffmpeg -i "The Bordroom 2 .mp4" -c:v libx264 -preset medium -crf 23 -pix_fmt yuv420p -maxrate 5M -bufsize 10M -c:a aac -b:a 128k -movflags +faststart videos/boardroom.mp4
-```
-
-The chapter timestamps in `tour.html` are cut to each clip's runtime — re-time them if a
-replacement clip has a different length.
+To swap a clip, upload the new file to the R2 bucket and point that room's `src` in `tour.html`
+at its public URL (URL-encode the spaces and `&`). The chapter timestamps in `tour.html` are cut
+to each clip's runtime — re-time them if a replacement clip has a different length.
 
 ## Booking
 
